@@ -30,5 +30,5 @@ func Run() {
 	server := gin.Default()
 	server.GET("/", http.PlaygroundHandler())
 	server.POST("/query", http.GraphqlHandler())
-
+	server.Run(":7777")
 }
