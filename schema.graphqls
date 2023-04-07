@@ -1,0 +1,45 @@
+
+type Mutation {
+  register(input: InputUser!): TokenOutput
+  login(input: LoginInput!): TokenOutput
+  refreshToken: TokenOutput
+  updateAccount(input: UpdateAccountInput): UserOutput
+  deleteAccount(id: String!): Boolean
+}
+
+type Query {
+  getById(id: String!): UserOutput
+}
+
+input LoginInput {
+  username: String!,
+  password: String!
+}
+
+input UpdateAccountInput {
+  firstname: String,
+  lastname: String,
+  password: String,
+  email: String
+}
+
+type UserOutput {
+  firstname: String,
+  lastname: String,
+  email: String
+}
+
+input InputUser {
+  firstname: String!
+  lastname: String
+  password: String!
+  password_confirmation: String!
+  email: String!
+}
+
+type TokenOutput {
+  success: Boolean
+  message: String
+  access_token: String!
+  refresh_token: String!
+}
