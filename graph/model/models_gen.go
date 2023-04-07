@@ -2,19 +2,35 @@
 
 package model
 
-type NewTodo struct {
-	Text   string `json:"text"`
-	UserID string `json:"userId"`
+type InputUser struct {
+	Firstname            string  `json:"firstname"`
+	Lastname             *string `json:"lastname,omitempty"`
+	Password             string  `json:"password"`
+	PasswordConfirmation string  `json:"password_confirmation"`
+	Email                string  `json:"email"`
 }
 
-type Todo struct {
-	ID   string `json:"id"`
-	Text string `json:"text"`
-	Done bool   `json:"done"`
-	User *User  `json:"user"`
+type LoginInput struct {
+	Username string `json:"username"`
+	Password string `json:"password"`
 }
 
-type User struct {
-	ID   string `json:"id"`
-	Name string `json:"name"`
+type TokenOutput struct {
+	Success      *bool   `json:"success,omitempty"`
+	Message      *string `json:"message,omitempty"`
+	AccessToken  string  `json:"access_token"`
+	RefreshToken string  `json:"refresh_token"`
+}
+
+type UpdateAccountInput struct {
+	Firstname *string `json:"firstname,omitempty"`
+	Lastname  *string `json:"lastname,omitempty"`
+	Password  *string `json:"password,omitempty"`
+	Email     *string `json:"email,omitempty"`
+}
+
+type UserOutput struct {
+	Firstname *string `json:"firstname,omitempty"`
+	Lastname  *string `json:"lastname,omitempty"`
+	Email     *string `json:"email,omitempty"`
 }
