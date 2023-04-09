@@ -24,9 +24,9 @@ input UpdateAccountInput {
 }
 
 type UserOutput {
-  firstname: String,
+  firstname: String!,
   lastname: String,
-  email: String
+  email: String!
 }
 
 input InputUser {

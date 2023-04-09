@@ -30,7 +30,7 @@ type UpdateAccountInput struct {
 }
 
 type UserOutput struct {
-	Firstname *string `json:"firstname,omitempty"`
+	Firstname string  `json:"firstname"`
 	Lastname  *string `json:"lastname,omitempty"`
-	Email     *string `json:"email,omitempty"`
+	Email     string  `json:"email"`
 }
