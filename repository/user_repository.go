@@ -1,15 +1,14 @@
 package repository
 
 import (
-	"belajar-golang-gql/graph/model"
-	"context"
+	"belajar-golang-gql/models/entity"
+	"belajar-golang-gql/utils"
 )
 
 type UserRepository interface {
-	//Create(ctx context.Context, user model.InputUser) (*model.UserOutput, error)
-	GetById(ctx context.Context, id string) (*model.UserOutput, error)
-	/*Update(ctx context.Context, user model.UpdateAccountInput) (model.UserOutput, error)
-	Delete(ctx context.Context, id string) bool
-	GenerateToken(ctx context.Context, user model.LoginInput) model.TokenOutput
-	RefreshToken(ctx context.Context) model.TokenOutput*/
+	Create(user entity.UserRepository) (*entity.UserRepository, error)
+	GetById(id string) (*entity.UserRepository, error)
+	Update(cuser entity.UserRepository) (*entity.UserRepository, error)
+	Delete(id string) (bool, error)
+	GetList(pagination utils.Pagination) (*utils.Pagination, error)
 }

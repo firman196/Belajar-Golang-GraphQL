@@ -14,10 +14,11 @@ type UserRepositoryMock struct {
 
 func (repository *UserRepositoryMock) GetById(ctx context.Context, id string) (*model.UserOutput, error) {
 	mockTest := repository.Mock.Called(id)
+
 	if mockTest.Get(0) != nil {
-		return nil, errors.New("internal server error ")
-	} else {
 		user := mockTest.Get(0).(model.UserOutput)
 		return &user, nil
+	} else {
+		return nil, errors.New("internal server error ")
 	}
 }

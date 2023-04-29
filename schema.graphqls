@@ -24,22 +24,23 @@ input UpdateAccountInput {
 }
 
 type UserOutput {
+  user_id : String!
   firstname: String!,
-  lastname: String,
+  lastname: String!,
   email: String!
 }
 
 input InputUser {
   firstname: String!
-  lastname: String
+  lastname: String!
   password: String!
   password_confirmation: String!
   email: String!
 }
 
 type TokenOutput {
-  success: Boolean
-  message: String
+  success: Boolean!
+  message: String!
   access_token: String!
   refresh_token: String!
 }

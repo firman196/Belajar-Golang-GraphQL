@@ -1,9 +1,11 @@
 package entity
 
-type User struct {
-	Firstname            string
-	Lastname             string
-	Email                string
-	Password             string
-	PasswordConfirmation string
+type UserRepository struct {
+	UserID    string
+	Firstname string
+	Lastname  string
+	Email     string
+	Password  string
+	CreatedAt int64
+	UpdatedAt int64
 }

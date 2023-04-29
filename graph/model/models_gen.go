@@ -3,11 +3,11 @@
 package model
 
 type InputUser struct {
-	Firstname            string  `json:"firstname"`
-	Lastname             *string `json:"lastname,omitempty"`
-	Password             string  `json:"password"`
-	PasswordConfirmation string  `json:"password_confirmation"`
-	Email                string  `json:"email"`
+	Firstname            string `json:"firstname"`
+	Lastname             string `json:"lastname"`
+	Password             string `json:"password"`
+	PasswordConfirmation string `json:"password_confirmation"`
+	Email                string `json:"email"`
 }
 
 type LoginInput struct {
@@ -16,10 +16,10 @@ type LoginInput struct {
 }
 
 type TokenOutput struct {
-	Success      *bool   `json:"success,omitempty"`
-	Message      *string `json:"message,omitempty"`
-	AccessToken  string  `json:"access_token"`
-	RefreshToken string  `json:"refresh_token"`
+	Success      bool   `json:"success"`
+	Message      string `json:"message"`
+	AccessToken  string `json:"access_token"`
+	RefreshToken string `json:"refresh_token"`
 }
 
 type UpdateAccountInput struct {
@@ -30,7 +30,8 @@ type UpdateAccountInput struct {
 }
 
 type UserOutput struct {
-	Firstname string  `json:"firstname"`
-	Lastname  *string `json:"lastname,omitempty"`
-	Email     string  `json:"email"`
+	UserID    string `json:"user_id"`
+	Firstname string `json:"firstname"`
+	Lastname  string `json:"lastname"`
+	Email     string `json:"email"`
 }
