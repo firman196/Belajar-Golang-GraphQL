@@ -308,9 +308,9 @@ input UpdateAccountInput {
 }
 
 type UserOutput {
-  firstname: String,
+  firstname: String!,
   lastname: String,
-  email: String
+  email: String!
 }
 
 input InputUser {
@@ -1129,11 +1129,14 @@ func (ec *executionContext) _UserOutput_firstname(ctx context.Context, field gra
 		return graphql.Null
 	}
 	if resTmp == nil {
+		if !graphql.HasFieldError(ctx, fc) {
+			ec.Errorf(ctx, "must not be null")
+		}
 		return graphql.Null
 	}
-	res := resTmp.(*string)
+	res := resTmp.(string)
 	fc.Result = res
-	return ec.marshalOString2ᚖstring(ctx, field.Selections, res)
+	return ec.marshalNString2string(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_UserOutput_firstname(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -1211,11 +1214,14 @@ func (ec *executionContext) _UserOutput_email(ctx context.Context, field graphql
 		return graphql.Null
 	}
 	if resTmp == nil {
+		if !graphql.HasFieldError(ctx, fc) {
+			ec.Errorf(ctx, "must not be null")
+		}
 		return graphql.Null
 	}
-	res := resTmp.(*string)
+	res := resTmp.(string)
 	fc.Result = res
-	return ec.marshalOString2ᚖstring(ctx, field.Selections, res)
+	return ec.marshalNString2string(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_UserOutput_email(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -3339,6 +3345,9 @@ func (ec *executionContext) _UserOutput(ctx context.Context, sel ast.SelectionSe
 
 			out.Values[i] = ec._UserOutput_firstname(ctx, field, obj)
 
+			if out.Values[i] == graphql.Null {
+				invalids++
+			}
 		case "lastname":
 
 			out.Values[i] = ec._UserOutput_lastname(ctx, field, obj)
@@ -3347,6 +3356,9 @@ func (ec *executionContext) _UserOutput(ctx context.Context, sel ast.SelectionSe
 
 			out.Values[i] = ec._UserOutput_email(ctx, field, obj)
 
+			if out.Values[i] == graphql.Null {
+				invalids++
+			}
 		default:
 			panic("unknown field " + strconv.Quote(field.Name))
 		}
